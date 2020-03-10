@@ -4,8 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evaluación intermedia Módulo 2 - Marina Couso</title>
+    <link rel="stylesheet" href="./main.css" />
   </head>
-  <body>
+  <body class="body">
+    <header>
+      <h1 class="header__title">Adivina el número</h1>
+    </header>
+    <main>
+      <form action="http://beta.adalab.es/modulo-2-evaluacion-intermedia-MarinaCouso/" method="post">
+        <label class="main-form label" for="number">Introduce aquí el número:</label>
+        <input class="js-userNumber main-form input-number" type="tel" name="number" placeholder="" required />
+        <label for="submit"></label>
+        <input class="main-form input-submit" type="submit" value="Prueba" name="submit" />
+      </form>
+      <p class="js-clue main-boxes">Pista: Escribe el número y dale a Prueba</p>
+      <p class="js-try main-boxes">Número de intentos: 0</p>
+    </main>
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

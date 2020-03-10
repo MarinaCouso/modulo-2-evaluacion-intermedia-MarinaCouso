@@ -1,0 +1,39 @@
+.body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(90, 84, 84);
+}
+.main-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.main-boxes {
+  border: rgb(204, 204, 204) solid 0.2rem;
+  padding: 0.5rem 0.2rem;
+}
+.input-number {
+  background-color: rgb(204, 204, 204);
+  border-radius: 0.2rem;
+  margin: 1rem 0rem;
+  height: 1.5rem;
+  width: 15rem;
+}
+
+.input-submit {
+  background-color: turquoise;
+  border-radius: 0.2rem;
+  color: white;
+  font-weight: bold;
+  height: 1.5rem;
+  box-shadow: none;
+}
+
+.warning {
+  color: red;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+}
