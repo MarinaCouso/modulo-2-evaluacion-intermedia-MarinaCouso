@@ -1,58 +1,50 @@
 // Constantes
 
-const userNumber = document.querySelector('.js-userNumber');
-
-const clue = document.querySelector('.js-clue');
-
-const tryBtn = document.querySelector('.js-submit');
-
-const randomNumber = getRandomNumber();
-
-// Funciones
-function getRandomNumber(max) {
-  return Math.ceil(Math.random() * 100);
+// Random number
+function getRandomNumber(min, max) {
+  return Math.ceil(Math.random() * min * max);
 }
 
-function getUserNumber() {
-  console.log(userNumber.value);
+const randomNumber = getRandomNumber(1, 100);
+console.log(randomNumber);
+
+// Input number
+const input = document.querySelector('.js-userNumber');
+let inputNumber;
+
+function getInputNumber() {
+  inputNumber = parseInt(input.value);
+  console.log(inputNumber);
 }
 
-function winNumber() {
-  if (randomNumber === userNumber.value) {
-    clue.innerHTML = 'Has ganado';
-    clue.classList.add('success');
-  } else {
-    clue.innerHTML = 'Sigue probando';
+getInputNumber();
+// Compare random and input number
+const submitBtn = document.querySelector('.js-submit');
+
+const pista = document.querySelector('.js-clue');
+
+function compareInputNumber(ev) {
+  ev.preventDefault();
+  if (inputNumber > 100 || inputNumber < 1) {
+    pista.innerHTML = 'El número debe estar entre 1 y 100';
+  } else if (randomNumber === inputNumber) {
+    pista.innerHTML = 'Has ganado campeona!!!';
+  } else if (randomNumber < inputNumber) {
+    pista.innerHTML = 'Pista: Demasiado alto';
+  } else if (randomNumber > inputNumber) {
+    pista.innerHTML = 'Pista: Demasiado bajo';
   }
 }
 
-function isValid() {
-  if (userNumber.value > 1 && userNumber.value < 100) {
-    winNumber();
-  } else if (userNumber.value < randomNumber) {
-    clue.innerHTML = 'El número es demasiado bajo';
-    clue.classList.add('warning');
-  } else if (userNumber.value > randomNumber) {
-    clue.innerHTML = 'El número es demasiado alto';
-    clue.classList.add('warning');
+const writeTries = document.querySelector('.js-try');
+
+function numberTries() {
+  for (let i = 0; i < 1; i++) {
+    writeTries.innerHTML = parseInt(writeTries.innerHTML) + 1;
   }
 }
 
-function isEntero() {
-  event.preventDefault();
-  if (userNumber.value % 1 === 0) {
-    isValid();
-  } else {
-    clue.innerHTML = 'Pista: El número debe estar entre 1 y 100';
-    clue.classList.add('warning');
-  }
-}
+input.addEventListener('change', getInputNumber);
 
-// Listeners
-
-userNumber.addEventListener('keyup', getUserNumber);
-
-tryBtn.addEventListener('click', isEntero);
-
-// Consola
-console.log(getRandomNumber());
+submitBtn.addEventListener('click', compareInputNumber);
+submitBtn.addEventListener('click', numberTries);
